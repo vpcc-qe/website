@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplementary Material: Video-based Point Cloud Compression Quality Enhancement Using Deep Learning Approach</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+            color: #212529;
+        }
+        .authors {
+            text-align: center;
+            font-style: italic;
+            color: #6c757d;
+            margin-bottom: 2.5em;
+            font-size: 1.1em;
+        }
+        .image-wrapper {
+            flex: 1;
+            min-width: 350px; /* Minimum width for each image block */
+            text-align: center;
+        }
+        .image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background-color: #000; /* Add a black background for better point cloud visibility */
+        }
+        .image-wrapper p {
+            margin-top: 0.8em;
+            font-size: 1em;
+            color: #495057;
+            font-weight: 500;
+        }
+        figcaption {
+            margin-top: 2em;
+            font-size: 1em;
+            color: #495057;
+            text-align: left;
+            border-top: 1px solid #e9ecef;
+            padding-top: 1.5em;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: #e9ecef;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Video-based Point Cloud Compression Quality Enhancement Using Deep Learning Approach</h1>
+            <p class="authors">Siu-Kei Au Yeung, Haoyu Dong and Zhitan Wang</p>
+            <p class="authors">Code: <a href="https://github.com/vpcc-qe/code">https://github.com/vpcc-qe/code</a></p>
+        </header>
+
+        <main>
+            <figure>
+                <div>
+                    <div class="image-wrapper">
+                        <img src="origin.png" alt="Original Point Cloud">
+                        <p>(a)</p>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="compress.png" alt="Compressed Point Cloud">
+                        <p>(b)</p>   
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="predict.png" alt="Predicted Point Cloud">
+                        <p>(c)</p>
+                    </div>
+                </div>
+                
+                <figcaption>
+                    This figure shows a visual comparison using the <code>soldier_vox10_0536.ply</code> sequence. 
+                    (a) The original point cloud. 
+                    (b) The (a) point cloud after being compressed by V-PCC (r1 configuration). 
+                    (c) The (b) point cloud after quality enhanced by our proposed BaseNet and InterpolateNet.
+                </figcaption>
+            </figure>
+        </main>
+    </div>
+
+</body>
+</html>
