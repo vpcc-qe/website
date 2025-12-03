@@ -1,108 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplementary Material: Video-based Point Cloud Compression Quality Enhancement Using Deep Learning Approach</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Supplementary Material: Video-based Point Cloud Compression Quality
+      Enhancement Using Deep Learning Approach
+    </title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 2rem;
-        }
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: #ffffff;
-            border-radius: 8px;
-        }
-        h1 {
-            text-align: center;
-            font-size: 1.8em;
-            margin-bottom: 0.5em;
-            color: #212529;
-        }
-        .authors {
-            text-align: center;
-            font-style: italic;
-            color: #6c757d;
-            margin-bottom: 2.5em;
-            font-size: 1.1em;
-        }
-        .image-wrapper {
-            flex: 1;
-            min-width: 350px; /* Minimum width for each image block */
-            text-align: center;
-        }
-        .image-wrapper img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-            background-color: #000; /* Add a black background for better point cloud visibility */
-        }
-        .image-wrapper p {
-            margin-top: 0.8em;
-            font-size: 1em;
-            color: #495057;
-            font-weight: 500;
-        }
-        figcaption {
-            margin-top: 2em;
-            font-size: 1em;
-            color: #495057;
-            text-align: left;
-            border-top: 1px solid #e9ecef;
-            padding-top: 1.5em;
-        }
-        code {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-            background-color: #e9ecef;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-size: 0.9em;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 2rem;
+      }
+      .container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 8px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 1.8em;
+        margin-bottom: 0.5em;
+        color: #212529;
+      }
+      .authors {
+        text-align: center;
+        font-style: italic;
+        color: #6c757d;
+        margin-bottom: 2.5em;
+        font-size: 1.1em;
+      }
+      .image-wrapper {
+        flex: 1;
+        min-width: 350px; /* Minimum width for each image block */
+        text-align: center;
+      }
+      .image-wrapper img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        background-color: #000; /* Add a black background for better point cloud visibility */
+      }
+      .image-wrapper p {
+        margin-top: 0.8em;
+        font-size: 1em;
+        color: #495057;
+        font-weight: 500;
+      }
+      figcaption {
+        margin-top: 2em;
+        font-size: 1em;
+        color: #495057;
+        text-align: left;
+        border-top: 1px solid #e9ecef;
+        padding-top: 1.5em;
+      }
+      code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          Courier, monospace;
+        background-color: #e9ecef;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+      .table-section {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .table-title {
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #212529;
+        max-width: 90%;
+      }
+      table {
+        width: auto;
+        max-width: 1200px;
+        border-collapse: collapse;
+        margin: 0 auto;
+        font-size: 0.9em;
+        background-color: #ffffff;
+      }
+      th,
+      td {
+        border: 1px solid #dee2e6;
+        padding: 0.5rem 0.7rem;
+        text-align: center;
+      }
+      th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: #212529;
+      }
+      td {
+        color: #495057;
+      }
+      tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      .network-config {
+        font-weight: 600;
+        text-align: left;
+      }
+      .network-config-bold {
+        font-weight: 700;
+      }
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 80px;
+      }
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 140px;
+      }
+      th:nth-child(5),
+      td:nth-child(5),
+      th:nth-child(6),
+      td:nth-child(6) {
+        width: 150px;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Video-based Point Cloud Compression Quality Enhancement Using Deep Learning Approach</h1>
-            <p class="authors">Siu-Kei Au Yeung, Haoyu Dong and Zhitan Wang</p>
-            <p class="authors">Code: <a href="https://github.com/vpcc-qe/code">https://github.com/vpcc-qe/code</a></p>
-        </header>
+      <header>
+        <h1>
+          Video-based Point Cloud Compression Quality Enhancement Using Deep
+          Learning Approach
+        </h1>
+        <p class="authors">Siu-Kei Au Yeung, Haoyu Dong and Zhitan Wang</p>
+        <p class="authors">
+          Code:
+          <a href="https://github.com/vpcc-qe/code"
+            >https://github.com/vpcc-qe/code</a
+          >
+        </p>
+      </header>
 
-        <main>
-            <figure>
-                <div>
-                    <div class="image-wrapper">
-                        <img src="origin.png" alt="Original Point Cloud">
-                        <p>(a)</p>
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="compress.png" alt="Compressed Point Cloud">
-                        <p>(b)</p>   
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="predict.png" alt="Predicted Point Cloud">
-                        <p>(c)</p>
-                    </div>
-                </div>
-                
-                <figcaption>
-                    This figure shows a visual comparison using the <code>soldier_vox10_0536.ply</code> sequence. 
-                    (a) The original point cloud. 
-                    (b) The (a) point cloud after being compressed by V-PCC (r1 configuration). 
-                    (c) The (b) point cloud after quality enhanced by our proposed BaseNet and InterpolateNet.
-                </figcaption>
-            </figure>
-        </main>
+      <main>
+        <figure>
+          <div>
+            <div class="image-wrapper">
+              <img src="origin.png" alt="Original Point Cloud" />
+              <p>(a)</p>
+            </div>
+            <div class="image-wrapper">
+              <img src="compress.png" alt="Compressed Point Cloud" />
+              <p>(b)</p>
+            </div>
+            <div class="image-wrapper">
+              <img src="predict.png" alt="Predicted Point Cloud" />
+              <p>(c)</p>
+            </div>
+          </div>
+
+          <figcaption>
+            This figure shows a visual comparison using the
+            <code>soldier_vox10_0536.ply</code> sequence. (a) The original point
+            cloud. (b) The (a) point cloud after being compressed by V-PCC (r1
+            configuration). (c) The (b) point cloud after quality enhanced by
+            our proposed BaseNet and InterpolateNet.
+          </figcaption>
+        </figure>
+
+        <div class="table-section">
+          <div class="table-title">
+            Performance Comparison of Lightweight 3D Minkowski UNet Variants
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Network Config</th>
+                <th>Dataset</th>
+                <th>Inference Time (s)</th>
+                <th>Peak Memory (MB)</th>
+                <th>Chamfer Distance</th>
+                <th>Hausdorff Distance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="network-config network-config-bold" rowspan="3">
+                  Baseline
+                </td>
+                <td>R1</td>
+                <td>/</td>
+                <td>/</td>
+                <td>1.23</td>
+                <td>12.63</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>/</td>
+                <td>/</td>
+                <td>0.93</td>
+                <td>9.82</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td>/</td>
+                <td>/</td>
+                <td>0.72</td>
+                <td>8.72</td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">[32,32,64,128,256]</td>
+                <td>R1</td>
+                <td>5.38</td>
+                <td>452.23</td>
+                <td>1.34</td>
+                <td>12.69</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>5.67</td>
+                <td>469.84</td>
+                <td>1.09</td>
+                <td>9.78</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">[32, 64, 128]</td>
+                <td>R1</td>
+                <td>2.85</td>
+                <td>159.71</td>
+                <td>1.36</td>
+                <td>12.61</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.95</td>
+                <td>169.55</td>
+                <td>1.07</td>
+                <td>9.74</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">[16, 32, 64]</td>
+                <td>R1</td>
+                <td>2.53</td>
+                <td>88.22</td>
+                <td>1.35</td>
+                <td>12.59</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.61</td>
+                <td>94.63</td>
+                <td>1.06</td>
+                <td>9.86</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">[4, 8, 16]</td>
+                <td>R1</td>
+                <td>2.40</td>
+                <td>78.68</td>
+                <td>1.34</td>
+                <td>12.67</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.58</td>
+                <td>84.96</td>
+                <td>1.07</td>
+                <td>9.86</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">[4, 4, 4]</td>
+                <td>R1</td>
+                <td>2.43</td>
+                <td>78.33</td>
+                <td>1.35</td>
+                <td>12.67</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.51</td>
+                <td>84.62</td>
+                <td>1.07</td>
+                <td>9.86</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-section">
+          <div class="table-title">
+            Training Methodology Performance Comparison
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Network Config</th>
+                <th>Dataset</th>
+                <th>Inference Time (s)</th>
+                <th>Peak Memory (MB)</th>
+                <th>Chamfer Distance</th>
+                <th>Hausdorff Distance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="network-config network-config-bold" rowspan="3">
+                  Baseline
+                </td>
+                <td>R1</td>
+                <td>/</td>
+                <td>/</td>
+                <td>1.23</td>
+                <td>12.63</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>/</td>
+                <td>/</td>
+                <td>0.93</td>
+                <td>9.82</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td>/</td>
+                <td>/</td>
+                <td>0.72</td>
+                <td>8.72</td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">Stage 1</td>
+                <td>R1</td>
+                <td>2.40</td>
+                <td>78.68</td>
+                <td>1.34</td>
+                <td>12.67</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.58</td>
+                <td>84.96</td>
+                <td>1.07</td>
+                <td>9.86</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">Stage 1 + Stage 2</td>
+                <td>R1</td>
+                <td>2.44</td>
+                <td>78.68</td>
+                <td>1.39</td>
+                <td>12.72</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.52</td>
+                <td>84.96</td>
+                <td>1.11</td>
+                <td>9.81</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-section">
+          <div class="table-title">
+            Dual-Stream Framework Performance Comparison
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Network Config</th>
+                <th>Dataset</th>
+                <th>Inference Time (s)</th>
+                <th>Peak Memory (MB)</th>
+                <th>Chamfer Distance</th>
+                <th>Hausdorff Distance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="network-config network-config-bold" rowspan="3">
+                  Baseline
+                </td>
+                <td>R1</td>
+                <td>/</td>
+                <td>/</td>
+                <td>1.23</td>
+                <td>12.63</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>/</td>
+                <td>/</td>
+                <td>0.93</td>
+                <td>9.82</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td>/</td>
+                <td>/</td>
+                <td>0.72</td>
+                <td>8.72</td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">A = Stage 1</td>
+                <td>R1</td>
+                <td>2.40</td>
+                <td>78.68</td>
+                <td>1.34</td>
+                <td>12.67</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.58</td>
+                <td>84.96</td>
+                <td>1.11</td>
+                <td>9.81</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">B = Stage 1 +Stage 2</td>
+                <td>R1</td>
+                <td>2.44</td>
+                <td>78.68</td>
+                <td>1.39</td>
+                <td>12.72</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>2.52</td>
+                <td>84.96</td>
+                <td>1.11</td>
+                <td>9.81</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">C = A + Model 2</td>
+                <td>R1</td>
+                <td>4.63</td>
+                <td>78.68</td>
+                <td>1.32</td>
+                <td>12.99</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>4.86</td>
+                <td>84.96</td>
+                <td>1.08</td>
+                <td>10.52</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="network-config" rowspan="3">D = B + Model 2</td>
+                <td>R1</td>
+                <td>4.64</td>
+                <td>78.68</td>
+                <td>1.34</td>
+                <td>13.02</td>
+              </tr>
+              <tr>
+                <td>R2</td>
+                <td>4.83</td>
+                <td>84.96</td>
+                <td>1.11</td>
+                <td>10.46</td>
+              </tr>
+              <tr>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
     </div>
-
-</body>
+  </body>
 </html>
