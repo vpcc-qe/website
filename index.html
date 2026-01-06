@@ -552,6 +552,155 @@
             </tbody>
           </table>
         </div>
+
+        
+
+        <!-- dancer and basketball -->
+        
+      
+        <div class="table-section">
+          <div class="table-title">
+            Performance Comparison of Lightweight 3D Minkowski UNet Variants (Owlii Dataset)
+          </div>
+          <p style="text-align: center; color: #6c757d; font-size: 0.95em; margin-bottom: 1rem; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            Evaluation performed on the R1 series dataset from Owlii, consisting of 20 point cloud sequences 
+            (10 <code>dancer</code> and 10 <code>basketball</code> sequences) compressed using V-PCC with R1 configuration. 
+            The reported metrics are averaged across all 20 sequences.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Network Config</th>
+                <th>Dataset</th>
+                <th>PSNR A to B</th>
+                <th>PSNR B to A</th>
+                <th>Inference Time (s)</th>
+                <th>Peak Memory (MB)</th>
+                <th>Chamfer Distance</th>
+                <th>Hausdorff Distance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="network-config network-config-bold">
+                  Baseline
+                </td>
+                <td>R1</td>
+                <td>66.70</td>
+                <td>67.13</td>
+                <td>/</td>
+                <td>/</td>
+                <td>1.05</td>
+                <td>9.93</td>
+              </tr>
+              <tr>
+                <td class="network-config">[32,32,64,128,256]</td>
+                <td>R1</td>
+                <td>66.29</td>
+                <td>68.31</td>
+                <td>4.71</td>
+                <td>412.38</td>
+                <td>1.20</td>
+                <td>9.76</td>
+              </tr>
+              <tr>
+                <td class="network-config">[32, 64, 128]</td>
+                <td>R1</td>
+                <td>66.22</td>
+                <td>68.23</td>
+                <td>2.47</td>
+                <td>142.00</td>
+                <td>1.21</td>
+                <td>9.62</td>
+              </tr>
+              <tr>
+                <td class="network-config">[16, 32, 64]</td>
+                <td>R1</td>
+                <td>66.26</td>
+                <td>68.30</td>
+                <td>2.19</td>
+                <td>79.37</td>
+                <td>1.19</td>
+                <td>9.77</td>
+              </tr>
+              <tr>
+                <td class="network-config">[4, 8, 16]</td>
+                <td>R1</td>
+                <td>66.36</td>
+                <td>68.29</td>
+                <td>2.10</td>
+                <td>70.73</td>
+                <td>1.20</td>
+                <td>9.86</td>
+              </tr>
+              <tr>
+                <td class="network-config">[4, 4, 4]</td>
+                <td>R1</td>
+                <td>66.29</td>
+                <td>68.26</td>
+                <td>2.09</td>
+                <td>70.39</td>
+                <td>1.20</td>
+                <td>9.86</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+        <div class="table-section">
+          <div class="table-title">
+            Training Methodology Performance Comparison (Owlii Dataset)
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Network Config</th>
+                <th>Dataset</th>
+                <th>PSNR A to B</th>
+                <th>PSNR B to A</th>
+                <th>Inference Time (s)</th>
+                <th>Peak Memory (MB)</th>
+                <th>Chamfer Distance</th>
+                <th>Hausdorff Distance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="network-config network-config-bold">
+                  Baseline
+                </td>
+                <td>R1</td>
+                <td>66.70</td>
+                <td>67.13</td>
+                <td>/</td>
+                <td>/</td>
+                <td>1.05</td>
+                <td>9.93</td>
+              </tr>
+              <tr>
+                <td class="network-config">Stage 1</td>
+                <td>R1</td>
+                <td>66.36</td>
+                <td>68.29</td>
+                <td>2.10</td>
+                <td>70.73</td>
+                <td>1.20</td>
+                <td>9.86</td>
+              </tr>
+              <tr>
+                <td class="network-config">Stage 1 + Stage 2</td>
+                <td>R1</td>
+                <td>65.92</td>
+                <td>68.61</td>
+                <td>2.09</td>
+                <td>70.73</td>
+                <td>1.26</td>
+                <td>9.86</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </main>
     </div>
   </body>
